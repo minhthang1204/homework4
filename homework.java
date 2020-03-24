@@ -5,6 +5,7 @@
  */
 package btap04;
 
+import static java.awt.PageAttributes.MediaType.A;
 import java.util.Scanner;
 
 /**
@@ -76,41 +77,39 @@ public class Btap04 {
         for (int i = 0; i < A.length; i++) {
             System.out.println("nhập vào phần tử thứ" + i + ":");
             A[i] = sc.nextInt();}
-            int x = check(int A,int n);
+            int x= check(A[]);
     }
 
-    static boolean check(int A[], int n) {
-        if (IsASC1(A, n)) {
+    
+
+   static boolean IsASC1(int b[], int n) {
+        int dem = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (b[i + 1] >= b[i]) {
+                dem++;
+            }
+        }
+        return dem == n - 1;
+    }
+
+    static boolean IsDESC1(int b[], int n) {
+        int dem = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (b[i + 1] <= b[i]) {
+                dem++;
+            }
+        }
+        return dem == n - 1;
+
+    }
+
+    static int check(int b[], int n) {
+        if (IsASC1(b, n)) {
             System.out.print(1);
-        } else if (IsDESC1(A, n)) {
+        } else if (IsDESC1(b, n)) {
             System.out.println(-1);
         } else {
             System.out.println(0);
         }
-       static boolean IsASC1(int a[], int n) {
-        int dem = 0;
-        for (int i = 0; i < n - 1; i++) {
-            if (a[i + 1] >= a[i]) {
-                dem++;
-            }
-        }
-        if (dem == n - 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    static boolean IsDESC1(int a[], int n) {
-        int dem = 0;
-        for (int i = 0; i < n - 1; i++) {
-            if (a[i + 1] <= a[i]) {
-                dem++;
-            }
-        }
-        if (dem == n - 1) {
-            return true;
-        } else {
-            return false;
-        }
+       
     }
